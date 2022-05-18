@@ -1,0 +1,9 @@
+### change the information below in the downloaded filebeat configuration
+### /etc/ansible/files/filebeat-config.yml
+
+hosts: ["10.1.0.4:9200"]
+  username: "elastic"
+  password: "changeme"
+
+setup.kibana:
+  host: "10.1.0.4:5601"
