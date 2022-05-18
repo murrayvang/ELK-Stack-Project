@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Don't let root run this...
+if [ $UID = 0 ]
+then
+echo "Don't run this script as root!"
+exit
+fi
+
+#This will be my output file
+output_file="$HOME/my_output.txt"
+
+#Check if ~/research dir exist/
+if [ ! -d $HOME/research ]
+then
+mkdir $HOME/research
+fi
+
+# Remove ~/research/sys_info.txt if it exist
+if [ -f $HOME/research/sys_info.txt ]
+then
+rm $HOME/research/sys_info.txt
+fi
+
+# Store IP address
+ipv4=$(hostname -I | awk -F" " '{print $1}')
+
+# Store all ex found in /home.
+executable=$(find /home -type f -perm 777)
